@@ -1,12 +1,12 @@
 var changeCaseObject = require('change-case-object');
 var fs = require('fs');
 var markov = require('markov');
-var WordPOS = require('wordpos');
 var path = require('path');
 var giphy = require('giphy-api')({
     https: true,
     apiKey: process.env.GIPHY_KEY
 });
+const WordPOS = require('wordpos');
 
 module.exports = {
   takeDefined(parameters) {
@@ -46,6 +46,16 @@ module.exports = {
       fmt: 'json'
     }).then(function(res) {
       return res.data.image_original_url
+    });
+  },
+
+  findNouns(searchString) {
+    var nouns;
+    var wordpos = new WordPOS();
+    return new Promise(function(resolve, _) {
+      wordpos.getNouns(searchString, nouns => {
+        resolve(nouns);
+      });
     });
   }
 

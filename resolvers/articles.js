@@ -1,4 +1,10 @@
-const { takeDefined, generateHeadline, generateContent, generateImage } = require('../helper');
+const {
+  takeDefined,
+  generateHeadline,
+  generateContent,
+  generateImage,
+  findNouns
+} = require('../helper');
 
 module.exports = {
   articles(
@@ -16,11 +22,15 @@ module.exports = {
     {Article}
   ){
     if(!header)
-      header = await generateHeadline(category)
+      header = await generateHeadline(category);
+
+    var nouns = await findNouns(header);
+    console.log(nouns[0]);
+
     if(!content)
       content = await generateContent(category);
     if(!image)
-      image =  await generateImage(category);
+      image =  await generateImage(nouns[0]);
 
     const article = new Article({
       category: category,
