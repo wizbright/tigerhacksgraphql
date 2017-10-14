@@ -20,6 +20,10 @@ type Query {
     content: String
     image: String
   ): [Article]!
+
+  gifs(
+    searchString: String!
+  ): String
 }
 
 type Mutation {
