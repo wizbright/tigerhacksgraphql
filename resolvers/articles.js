@@ -1,4 +1,4 @@
-const { takeDefined } = require('../helper');
+const { takeDefined, generateHeadline, generateContent, generateImage } = require('../helper');
 
 module.exports = {
   articles(
@@ -11,10 +11,17 @@ module.exports = {
       .then(articles => articles.toJSON());
   },
 
-  createArticle(
+  async createArticle(
     {category, header, content, image},
     {Article}
   ){
+    if(!header)
+      header = await generateHeadline(category)
+    if(!content)
+      content = await generateContent(category);
+    if(!image)
+      image =  await generateImage(category);
+
     const article = new Article({
       category: category,
       header: header,
