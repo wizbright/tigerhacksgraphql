@@ -10,11 +10,16 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "bookshelf": "^0.10.4",
+    "bookshelf-camelcase": "^2.0.1",
+    "bookshelf-returning": "^0.3.1",
     "change-case-object": "^2.0.0",
     "cors": "^2.8.4",
     "express": "^4.16.2",
     "express-graphql": "^0.6.11",
     "graphql": "^0.11.7",
-    "graphql-tools": "^2.5.0"
+    "graphql-tools": "^2.5.0",
+    "knex": "^0.13.0",
+    "pg": "^7.3.0"
   }
 }

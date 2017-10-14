@@ -1,0 +1,32 @@
+enum Category {
+  Politics
+  Sports
+  Technology
+}
+
+type Article {
+  category: Category!
+  header: String!
+  content: String!
+  id: String!
+  image: String!
+}
+
+type Query {
+  articles(
+    id: String
+    category: Category
+    header: String
+    content: String
+    image: String
+  ): [Article]!
+}
+
+type Mutation {
+  createArticle(
+    category: Category!
+    header: String!
+    content: String!
+    image: String!
+  ): Article!
+}
