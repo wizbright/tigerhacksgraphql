@@ -30,7 +30,7 @@ module.exports = {
 
   generateContent(category) {
     var stream = fs.createReadStream(path.join(__dirname, 'src', category, 'content.txt'));
-    var m = markov(10);
+    var m = markov(5);
 
     return new Promise(function(resolve, _) {
       m.seed(stream, _ => {
